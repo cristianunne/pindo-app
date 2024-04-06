@@ -5,8 +5,13 @@ import { useNavigate } from 'react-router-dom'
 
 import '../../../styles/tables/tables.css'
 import VerIcon from '../../../icons/VerIcon';
+import { RodalesGlobalContext } from '../../../context/globalcontext';
+import { SCREENS_RODALES } from '../../../utility/SCREENS';
 
 const TableRodales = ({ data_rodales }) => {
+
+    const { screen, setScreen,
+        stateScreen, setStateScreen} = useContext(RodalesGlobalContext);
 
     const [data, setData] = useState([]);
     const navigate = useNavigate();
@@ -20,6 +25,9 @@ const TableRodales = ({ data_rodales }) => {
         let id_empresa = id_empresa_attr != undefined ? id_empresa_attr : null;
 
         if (id_empresa) {
+
+            //seteo el screen inicial
+
 
             navigate(`/empresas/${id_empresa}`)
 

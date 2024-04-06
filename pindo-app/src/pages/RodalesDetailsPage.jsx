@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom';
 import Header from '../components/header/Header';
 import { RodalesGlobalContext } from '../context/globalcontext';
-import { getRodalesByUsoAPI, getRodalesGisByIdAPI } from '../utility/querys';
+import { getRodalesByIdAPI } from '../utility/querys';
 import ItemsActionsRodalesContainer from '../components/rodales/items-actions/ItemsActionsRodalesContainer';
 import RodalesIcon from '../icons/RodalesIcon';
 import MainScreenContainer from '../screen/rodales/MainScreenContainer';
@@ -22,11 +22,11 @@ const RodalesDetailsPage = () => {
 
     const getRodales = async (idrodal) => {
 
-        const data_rodales = await getRodalesGisByIdAPI(idrodal);
+        const data_rodales = await getRodalesByIdAPI(idrodal);
 
         if (data_rodales) {
          
-            setDataRodales(data_rodales);
+            setDataRodales(data_rodales[0]);
 
         }
         setStateScreen(true);

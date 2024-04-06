@@ -20,7 +20,10 @@ export const URLS = {
     EMPRESAS_GET_RESUMEN_COSTOS_BY_YEARS: url_api_sap + 'getResumenCostosByYearsByQuery',
     EMPRESAS_GET_RESUMEN_COSTOS_BY_YEARS_BY_RODALES: url_api_sap + 'getResumenCostosByYearsRodalesByQuery',
 
+    RODALES_GET_BY_ID: url_api + 'rodales/getRodalesById',
     RODALES_GET_BY_USO: url_api + 'rodales/getRodalesByUso',
 
     RODALESGIS_GET_BY_ID: url_api + 'gis/getRodalesGisById',
+
+    PLANIFICACION_GET_BY_RODAL: url_api + 'planificacion/getPlanificacionIntervencionesByRodal'
 }
