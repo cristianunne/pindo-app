@@ -35,7 +35,7 @@ const ResumenGeneralRodales = ({ rodales }) => {
 
         if(rodales != null && rodalGis == null){
 
-           getRodalGis(rodales.pk);
+           //getRodalGis(rodales.pk);
 
         }
 

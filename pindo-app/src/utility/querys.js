@@ -187,3 +187,13 @@ export const getRodalesGisByIdAPI = async (idrodal) => {
 
 
 }
+
+export const getRodalesByIdAPI = async (idrodal) => {
+
+    
+    return await axios.get(URLS.RODALESGIS_GET_BY_ID + `/${idrodal}/`, {
+        responseType: "json", transformResponse: JSON.parse})
+    .then(response => response.data)
+
+
+}
