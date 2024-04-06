@@ -1,0 +1,38 @@
+
+#card-empresa-details{
+    box-shadow: 1px -2px 16px 2px rgb(0 99 255 / 75%);
+    -webkit-box-shadow: 1px -2px 16px 2px rgb(0 99 255 / 75%);
+    -moz-box-shadow: 1px -2px 16px 2px  rgb(0 99 255 / 75%);
+}
+
+.avatar{
+    background-color: #4264eb;
+}
+
+.avatar svg{
+    color: white;
+}
+
+.list-group .list-group-item{
+    border-bottom: 1px solid #4264eb !important;
+}
+
+.div-main-container {
+    overflow-y: scroll;
+    height: 95vh;
+    margin-bottom: 100px;
+}
+* {
+    scrollbar-color: unset;
+}
+
+#div-main-container::-webkit-scrollbar, #div-main-container::-webkit-scrollbar {
+    width: 10px;               /* width of the entire scrollbar */
+  }
+
+  
+  #div-main-container::-webkit-scrollbar-thumb, #div-main-container::-webkit-scrollbar-thumb {
+    background-color: #3055ac;    /* color of the scroll thumb */
+    border-radius: 4px;       /* roundness of the scroll thumb */
+    border: 1px solid #3055ac;  /* creates padding around scroll thumb */
+  }

@@ -1,0 +1,201 @@
+/* index **/
+
+.bg-dark-pindo{
+  background-color: #010013 !important;
+}
+
+#row1 {
+  height: 90vh;
+
+
+}
+
+#cover-container {
+  /*background-image: url('img/covlog.svg');*/
+  background-image: url('img/covlog.webp');
+  background-blend-mode: luminosity;
+  flex: 1;
+  height: 100%;
+
+  display: flex;
+
+}
+
+
+#title-row1 {
+ 
+  font-size: 7rem;;
+  text-shadow: rgb(12, 19, 49) 1px 0 10px;
+  background: 50% 100%/50% 50% no-repeat radial-gradient(ellipse at bottom, #fff, transparent, transparent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: "Source Sans Pro", sans-serif;
+  -webkit-animation: reveal 3000ms ease-in-out forwards 200ms, glow 2500ms linear infinite 2000ms;
+  animation: reveal 3000ms ease-in-out forwards 200ms, glow 2500ms linear infinite 2000ms;
+}
+
+#title-row1::before{
+  position: absolute;
+}
+
+#title-row2 {
+ 
+  font-size: 3rem;
+  text-shadow: rgb(12, 19, 49) 1px 0 10px;
+  -webkit-animation: reveal 3000ms ease-in-out forwards 200ms, glow 2500ms linear infinite 2000ms;
+  animation: reveal 3000ms ease-in-out forwards 200ms, glow 2500ms linear infinite 2000ms;
+
+}
+
+#title-row2::before{
+  position: absolute;
+}
+
+.text-animation-container{
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}
+
+@-webkit-keyframes reveal {
+  80% {
+    letter-spacing: 8px;
+  }
+
+  100% {
+    background-size: 300% 300%;
+  }
+}
+
+@keyframes reveal {
+  80% {
+    letter-spacing: 8px;
+  }
+
+  100% {
+    background-size: 300% 300%;
+  }
+}
+
+@-webkit-keyframes glow {
+  40% {
+    text-shadow: 0 0 15px #fff;
+  }
+}
+
+@keyframes glow {
+  40% {
+    text-shadow: 0 0 15px #fff;
+  }
+}
+
+
+.container-index{
+  overflow-y: auto;
+  height: 90vh;
+}
+
+.container-index::-webkit-scrollbar, .container-index::-webkit-scrollbar {
+  width: 10px;               /* width of the entire scrollbar */
+}
+
+
+.container-index::-webkit-scrollbar-thumb, .container-index::-webkit-scrollbar-thumb {
+  background-color: #3055ac;    /* color of the scroll thumb */
+  border-radius: 4px;       /* roundness of the scroll thumb */
+  border: 1px solid #3055ac;  /* creates padding around scroll thumb */
+}
+
+
+
+/*** Service ***/
+
+.text-app-title {
+  color: white;
+  text-shadow: rgb(248, 248, 248) 1px 0 10px;
+}
+
+
+.service-item {
+  position: relative;
+  height: 400px;
+  padding: 30px 25px;
+  background-color: #061320;
+  transition: .5s;
+  border: solid 2px #0e1d3a;
+  box-shadow: 1px -2px 16px 2px rgba(18, 42, 80, 0.75);
+  -webkit-box-shadow: 1px -2px 16px 2px rgba(18, 42, 80, 0.75);
+  -moz-box-shadow: 1px -2px 16px 2px rgba(18, 42, 80, 0.75);
+}
+
+.service-item:hover {
+  background: #4264eb83;
+}
+
+.service-item .service-icon {
+  margin: 0 auto 20px auto;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tblr-light);
+  transition: .5s;
+}
+
+.service-item:hover .service-icon {
+  color: white;
+  /*background: url(../img/icon-shape-white.png);*/
+}
+
+.service-item h3,
+.service-item p {
+  transition: .5s;
+  color: white;
+  font-size: 17px;
+}
+
+.service-item:hover h3,
+.service-item:hover p {
+  color: var(--tblr-light);
+}
+
+.service-item a.btn {
+  position: relative;
+  display: flex;
+  color: var(--tblr-dark);
+  transition: .5s;
+  z-index: 1;
+  background-color: #061320;
+  color: whitesmoke;
+}
+
+.service-item:hover a.btn {
+  color: #ffffff
+}
+
+.service-item a.btn::before {
+  position: absolute;
+  content: "";
+  width: 35px;
+  height: 34px;
+  top: 0;
+  left: 0;
+  background: #14293d;
+  transition: .5s;
+  z-index: -1;
+  color: #FFFFFF;
+
+}
+
+.service-item:hover a.btn::before {
+  width: 100%;
+  background: rgb(15, 9, 71);
+  color: #FFFFFF !important;
+}
+
+

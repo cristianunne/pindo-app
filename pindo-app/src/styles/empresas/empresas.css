@@ -1,0 +1,44 @@
+
+
+.card-empresas-item{
+    height: 350px;
+    background-color: #061320;
+    padding-top: 5px;
+    transition: .5s;
+    border: solid 2px #0e1d3a;
+    box-shadow: 1px -2px 16px 2px rgba(18, 42, 80, 0.75);
+    -webkit-box-shadow: 1px -2px 16px 2px rgba(18, 42, 80, 0.75);
+    -moz-box-shadow: 1px -2px 16px 2px rgba(18, 42, 80, 0.75);
+    color: #cdcdcd;
+}
+
+.title-item {
+    color: #cdcdcd;
+}
+
+#icon-empresas{
+    color: white;
+}
+
+.card-empresas-item .card-footer {
+    background-color: unset;
+}
+
+.card-empresas-item:hover{
+    background: #4264eb83;
+    box-shadow: 1px -2px 16px 2px rgba(71, 98, 141, 0.75);
+    -webkit-box-shadow: 1px -2px 16px 2px rgba(71, 98, 141, 0.75);
+    -moz-box-shadow: 1px -2px 16px 2px rgba(71, 98, 141, 0.75);
+}
+
+
+#card-body-table-rodal-resumen::-webkit-scrollbar, #div-main-container::-webkit-scrollbar {
+    width: 7px;               /* width of the entire scrollbar */
+  }
+
+  
+  #card-body-table-rodal-resumen::-webkit-scrollbar-thumb, #div-main-container::-webkit-scrollbar-thumb {
+    background-color: #3055ac;    /* color of the scroll thumb */
+    border-radius: 4px;       /* roundness of the scroll thumb */
+    border: 1px solid #3055ac;  /* creates padding around scroll thumb */
+  }

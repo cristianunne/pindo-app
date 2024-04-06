@@ -1,0 +1,26 @@
+
+
+.rodales-container-index{
+
+    height: 90vh;
+    overflow-y: auto;
+}
+
+.row-rodales-container {
+    margin-bottom: 15%;
+}
+
+
+.rodales-container-index::-webkit-scrollbar, .rodales-container-index::-webkit-scrollbar {
+    width: 10px;               /* width of the entire scrollbar */
+  }
+  
+  
+  .rodales-container-index::-webkit-scrollbar-thumb, .rodales-container-index::-webkit-scrollbar-thumb {
+    background-color: #3055ac;    /* color of the scroll thumb */
+    border-radius: 4px;       /* roundness of the scroll thumb */
+    border: 1px solid #3055ac;  /* creates padding around scroll thumb */
+  }
+  
+  
+  
