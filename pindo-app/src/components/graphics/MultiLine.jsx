@@ -109,6 +109,8 @@ const MultiLine = ({ title, data_graphic, name_serie, number_data, labels, color
         createDataset();
       
       }
+      console.log('data_graphic');
+      console.log(data_graphic);
       
     }, [data_graphic, isReload])
     return (

@@ -26,7 +26,7 @@ const ResumenGeneralRodales = ({ rodales }) => {
 
         if (data_gis){
 
-            setRodalGis(JSON.parse(data_gis[0].gis));
+            setRodalGis(JSON.parse(data_gis[0].gis_rodal_inicial));
             setConfigMap(data_gis[1].config)
             setData(data_gis);
 

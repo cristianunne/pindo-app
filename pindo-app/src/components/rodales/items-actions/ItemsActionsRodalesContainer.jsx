@@ -25,12 +25,12 @@ const ItemsActionsRodalesContainer = () => {
 
         <ItemsActionsRodales description={'Información general del Rodal'} screen_current={SCREENS_RODALES.GENERAL}></ItemsActionsRodales>
 
-        <ItemsActionsRodales description={'Planificacio de Intervenciones'} screen_current={SCREENS_RODALES.PLANIFICACION_INTERVENCIONES}></ItemsActionsRodales>
+        <ItemsActionsRodales description={'Planificación de Intervenciones'} screen_current={SCREENS_RODALES.PLANIFICACION_INTERVENCIONES}></ItemsActionsRodales>
 
+        <ItemsActionsRodales description={'Producción Forestal'} screen_current={SCREENS_RODALES.PRODUCCION_RESUMEN}></ItemsActionsRodales>
+        <ItemsActionsRodales description={'Resumen de Costos'} screen_current={SCREENS_RODALES.COSTOS_RESUMEN}></ItemsActionsRodales>
        
-        <ItemsActions description={'Producción Forestal'} screen_current={SCREENS_EMPRESAS.PRODUCCION_RESUMEN}></ItemsActions>
-
-        <ItemsActions description={'Resumen de Costos'} screen_current={SCREENS_EMPRESAS.COSTOS_RESUMEN}></ItemsActions>
+      
 
     </div>
     )

@@ -25,5 +25,13 @@ export const URLS = {
 
     RODALESGIS_GET_BY_ID: url_api + 'gis/getRodalesGisById',
 
-    PLANIFICACION_GET_BY_RODAL: url_api + 'planificacion/getPlanificacionIntervencionesByRodal'
+    PLANIFICACION_GET_BY_RODAL: url_api + 'planificacion/getPlanificacionIntervencionesByRodal',
+    PLANIFICACION_GET_LEGEND: url_api + 'planificacion/getReferenciasPlanificacion/',
+
+    PRODUCCION_FORESTAL_GET: url_api_sap + 'getResumenProduccionByYears',
+    PRODUCCION_FORESTAL_BY_MATERIAL: url_api_sap + 'getResumenProduccionByYearsByMaterial',
+
+    COSTOS_RESUMEN: url_api_sap + 'getResumenCostosByQuery',
+    COSTOS_RESUMEN_BY_YEARS: url_api_sap + 'getResumenCostosByYearsByQuery',
+
 }

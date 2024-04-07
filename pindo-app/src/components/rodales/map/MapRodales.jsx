@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { MapContainer, TileLayer, GeoJSON, useMapEvent } from 'react-leaflet'
+import { MapContainer, TileLayer, GeoJSON, LayersControl } from 'react-leaflet'
 import { useMap } from 'react-leaflet/hooks'
 import "leaflet/dist/leaflet.css";
 
@@ -10,12 +10,12 @@ import emp from '../emp.json'
 const MapRodales = ({ rodalGis, bound }) => {
 
   const [geoJsonLayer, setGeoJsonLayer] = useState();
- 
 
-  const setColor = ({ properties }) => {
-    return { 
+
+  const setColorInicial = ({ properties }) => {
+    return {
       fillColor: '#0000ff',
-      weight: 0.5, 
+      weight: 0.5,
       color: '#0000ff',
       fillOpacity: 0.6
     };
@@ -26,8 +26,8 @@ const MapRodales = ({ rodalGis, bound }) => {
 
   useEffect(() => {
 
-    if(rodalGis != null && bound != null){
-      let g_json = <GeoJSON data={rodalGis} style={setColor} />;
+    if (rodalGis != null && bound != null) {
+      let g_json = <GeoJSON data={rodalGis} style={setColorInicial} />;
       setGeoJsonLayer(g_json);
 
     }
@@ -36,7 +36,7 @@ const MapRodales = ({ rodalGis, bound }) => {
 
   return (
     <>
-      {rodalGis != null ? (bound != null ? <MapContainer 
+      {rodalGis != null ? (bound != null ? <MapContainer
 
         bounds={bound}
         zoomControl={true}
@@ -51,8 +51,12 @@ const MapRodales = ({ rodalGis, bound }) => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           subdomains={['mt0', 'mt1', 'mt2', 'mt3']}
         />
+        <LayersControl position="topright">
+          <LayersControl.Overlay checked name="Rodal inicial">
+            {geoJsonLayer}
+          </LayersControl.Overlay>
+        </LayersControl>
 
-        {geoJsonLayer}
 
       </MapContainer> : null) : null}
 

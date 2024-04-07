@@ -29,15 +29,16 @@ const TableProduccionByMaterialByYear = ({ data_produccion }) => {
 
                     item_.push(
 
-                        val > 0 ? <td className='text-center text-green'>{val}</td> :  <td className='text-center'>{val}</td>
+                        val > 0 ? <td key={'td' + key + value.txtmaterial} className='text-center text-green'>{val}</td> :  
+                        <td key={'td' + key + value.txtmaterial} className='text-center'>{val}</td>
 
                        );
 
                 });
 
                 item_tr.push(
-                    <tr>
-                        <td className='text-white'>{value.txtmaterial}</td>
+                    <tr key={value.txtmaterial + 'tr'}>
+                        <td key={value.txtmaterial} className='text-white'>{value.txtmaterial}</td>
                         {item_}
                     </tr>
                 );
@@ -50,6 +51,7 @@ const TableProduccionByMaterialByYear = ({ data_produccion }) => {
 
 
         }
+     
 
 
     }, [data_produccion])
@@ -102,14 +104,14 @@ const TableProduccionByMaterialByYear = ({ data_produccion }) => {
     return (
         <Table bordered hover id='tabla-rodales-empresas' className='table-pindo-black'>
             <thead className="top-0 thead-border ">
-                <tr>
-                    <th className="dt-center text-center">Material/Año</th>
+                <tr key={'tr_prodyear'}>
+                    <th key={'th_title'} className="dt-center text-center">Material/Año</th>
 
                     {data.years != null ?
                         data.years.map((element, index) => {
 
                             return (
-                                <th className="dt-center text-center">{element.year}</th>
+                                <th key={'th_' + element.year} className="dt-center text-center">{element.year}</th>
 
                             )
                         }) : null

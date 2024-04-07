@@ -208,3 +208,67 @@ export const getPlanificacionByIdRodalAPI = async (idrodal) => {
 
 
 }
+
+export const getPlanificacionLegendAPI = async (idrodal) => {
+
+    
+    return await axios.get(URLS.PLANIFICACION_GET_LEGEND, {
+        responseType: "json", transformResponse: JSON.parse})
+    .then(response => response.data)
+
+
+}
+
+
+export const getProduccionByRodalAPI = async (id_rodal) => {
+
+    
+    return await axios.post(URLS.PRODUCCION_FORESTAL_GET, {
+        filter: {
+            rodales: id_rodal
+        } 
+        
+    })
+    .then(response => response.data)
+
+}
+
+export const getProduccionByMaterialByRodalAPI = async (id_rodal) => {
+
+    
+    
+    return await axios.post(URLS.PRODUCCION_FORESTAL_BY_MATERIAL, {
+        filter: {
+            rodales: id_rodal
+        } 
+        
+    })
+    .then(response => response.data)
+
+}
+
+export const getResumenCostosByRodalAPI = async (idrodal) => {
+
+    
+    return await axios.post(URLS.COSTOS_RESUMEN, {
+        filter: {
+            rodales: idrodal
+        } 
+        
+    })
+    .then(response => response.data)
+
+}
+
+export const getResumenCostosByYearsByRodalAPI = async (idrodal) => {
+
+    
+    return await axios.post(URLS.COSTOS_RESUMEN_BY_YEARS, {
+        filter: {
+            rodales: idrodal
+        } 
+        
+    })
+    .then(response => response.data)
+
+}

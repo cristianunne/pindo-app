@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ItemSimpleResumen from '../../components/empresas/resumen-items/ItemSimpleResumen'
 import TimelineTable from '../../components/planificacion-gant/TimelineTable'
 import { getPlanificacionByIdRodalAPI } from '../../utility/querys'
+import LegendTimeline from '../../components/planificacion-gant/LegendTimeline'
 
 const PlanificacionIntervenciones = ({ rodales }) => {
 
@@ -51,6 +52,9 @@ const PlanificacionIntervenciones = ({ rodales }) => {
 
                     <div className="col-lg-12 mb-7">
                             <h2 className="h2 text-white">Referencias</h2>
+                            <div className="card bg-transparent flex-row justify-content-start gap-3">
+                                <LegendTimeline></LegendTimeline>
+                            </div>
                     </div>
 
 

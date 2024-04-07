@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { getProduccionByEmpresaAPI, getProduccionByMaterialByEmpresaAPI } from '../../utility/querys';
+import React, { useContext, useEffect, useState } from 'react'
+import { getProduccionByMaterialByRodalAPI, getProduccionByRodalAPI } from '../../utility/querys';
 import LineGr from '../../components/graphics/LineGr';
 import TableProduccionByYears from '../../components/empresas/tables/TableProduccionByYears';
 import TableProduccionByMaterialByYear from '../../components/empresas/tables/TableProduccionByMaterialByYear';
 import MultiLine from '../../components/graphics/MultiLine';
 
-
-const ProduccionResumenEmpresa = ({empresa}) => {
+const ResumenProduccionRodales = ({ rodales }) => {
 
     const [dataProduccionYears, setDataProduccionYears] = useState([]);
     const [dataMaterialProduccion, setDataMaterialProduccion] = useState(null);
@@ -24,15 +23,14 @@ const ProduccionResumenEmpresa = ({empresa}) => {
     const [labelsMultiLine, setLabelsMultiLine] = useState([]);
     const [colorsMultiLine, setColorsMultiLine] = useState([]);
 
-    
 
-    const getProduccionByEmpresa = async () => {
+    const getProduccionByRodal = async () => {
 
-        const data_prod = await getProduccionByEmpresaAPI(empresa.sap_id);
+        const data_prod = await getProduccionByRodalAPI(rodales.cod_sap);
 
-        const data_material = await getProduccionByMaterialByEmpresaAPI(empresa.sap_id);
+        const data_material = await getProduccionByMaterialByRodalAPI(rodales.cod_sap);
 
-        if(data_prod){
+        if (data_prod) {
 
             setDataProduccionYears(data_prod);
 
@@ -60,7 +58,6 @@ const ProduccionResumenEmpresa = ({empresa}) => {
             setDataGraphicBar(data_graphic_);
             setLabelsBar(labels_);
             setColorsBar(colors_);
-
         }
 
         if(data_material){
@@ -108,20 +105,16 @@ const ProduccionResumenEmpresa = ({empresa}) => {
 
         }
         setResState(true);
-
     }
 
 
     useEffect(() => {
-        
-        if(!resState){
-            getProduccionByEmpresa();
+        if (!resState) {
+            getProduccionByRodal();
         }
-      
-    }, [resState]);
+    }, [resState])
 
     return (
-        <>
         <div className="container" style={{ marginBottom: '150px' }}>
             <div className="row mb-5">
                 <div className="col-lg-12">
@@ -129,66 +122,6 @@ const ProduccionResumenEmpresa = ({empresa}) => {
                 </div>
 
             </div>
-
-            <div className="row row-cards mb-5 justify-content-center">
-                <div className="col-sm-6 col-lg-3">
-                    <div className="card card-sm bg-dark text-green">
-                        <div className="card-body">
-                            <div className="row align-items-center">
-                                <div className="col-auto">
-                                    <span className="bg-green text-white avatar">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="icon" width="24" height="24" 
-                                        viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" 
-                                        strokeLinecap="round" strokeLinejoin="round"><path stroke="none" 
-                                        d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2">
-                                          </path><path d="M12 3v3m0 12v3"></path></svg>
-                                    </span>
-                                </div>
-                                <div className="col">
-                                    <div className="font-weight-bold text-green">
-                                        Cantidad de Expedientes
-                                    </div>
-                                    <div className="text-white">
-                                        122
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-lg-3">
-                    <div className="card card-sm bg-dark text-green">
-                        <div className="card-body">
-                            <div className="row align-items-center">
-                                <div className="col-auto">
-                                    <span className="bg-green text-white avatar">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="icon" width="24" 
-                                        height="24" viewBox="0 0 24 24" strokeWidth="2" 
-                                        stroke="currentColor" fill="none" strokeLinecap="round" 
-                                        strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" 
-                                        fill="none"></path>
-                                        <path d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2">
-                                          </path><path d="M12 3v3m0 12v3"></path></svg>
-                                    </span>
-                                </div>
-                                <div className="col">
-                                    <div className="font-weight-bold text-green">
-                                        Superficie Total Aprobada
-                                    </div>
-                                    <div className="text-white">
-                                        6456546456 ha
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-
             <div className="row mt-6 justify-content-center p-0">
 
                 <div className="col-lg-12">
@@ -200,24 +133,25 @@ const ProduccionResumenEmpresa = ({empresa}) => {
 
                         <div id='card-body-table-rodal-resumen' className="card-body d-flex justify-content-center" style={{ maxHeight: '600px', overflow: 'auto' }}>
                             <LineGr
-                                  title={'Total de Producción Forestal por año'}
-                                  data_graphic={dataGraphicBar} name_serie={'Producción (t)'} 
-                                  number_data={Object.keys(dataGraphicBar).length}
-                                  colors={colorsBar} labels={labelsBar}
+                                title={'Total de Producción Forestal por año'}
+                                data_graphic={dataGraphicBar} name_serie={'Producción (t)'}
+                                number_data={Object.keys(dataGraphicBar).length}
+                                colors={colorsBar} labels={labelsBar}
                             ></LineGr>
                         </div>
+
 
                     </div>
                 </div>
 
                 <div className="col-lg-12 mt-5">
-                        <div className="card bg-transparent">
+                    <div className="card bg-transparent">
 
-                            <div id='card-body-table-rodal-resumen' className="card-body" style={{ maxHeight: '600px', overflow: 'auto' }}>
-                                <TableProduccionByYears data_produccion={dataProduccionYears}></TableProduccionByYears>
-                            </div>
-
+                        <div id='card-body-table-rodal-resumen' className="card-body" style={{ maxHeight: '600px', overflow: 'auto' }}>
+                            <TableProduccionByYears data_produccion={dataProduccionYears}></TableProduccionByYears>
                         </div>
+
+                    </div>
                 </div>
 
                 <div className="hr text-white"></div>
@@ -231,7 +165,7 @@ const ProduccionResumenEmpresa = ({empresa}) => {
                         <div id='card-body-table-rodal-resumen' className="card-body" style={{ maxHeight: '800px', width: '100%', overflow: 'auto' }}>
 
                             <TableProduccionByMaterialByYear data_produccion={dataMaterialProduccion}></TableProduccionByMaterialByYear>
-                        
+                            
                         </div>
 
                     </div>
@@ -245,7 +179,7 @@ const ProduccionResumenEmpresa = ({empresa}) => {
 
                                 <div className="card mt-7" style={{ backgroundColor: 'transparent' }}>
                                     <div className="card-body">
-                                        <div id="chart-tasks-overview" style={{height: '800px', maxHeight: '800px' }} className='d-flex justify-content-center'>
+                                        <div id="chart-tasks-overview" style={{ height: '800px', maxHeight: '800px' }} className='d-flex justify-content-center'>
 
                                           <MultiLine data_graphic={dataGraphicMultiLine} 
                                             title={'Producción por tipo de Material agrupado por año (t)'} 
@@ -258,22 +192,16 @@ const ProduccionResumenEmpresa = ({empresa}) => {
 
                             </div>
 
-
-
                         </div>
                     </div>
-
-
 
 
                 </div>
 
 
-
             </div>
-        </div >
-    </>
+        </div>
     )
 }
 
-export default ProduccionResumenEmpresa
+export default ResumenProduccionRodales
