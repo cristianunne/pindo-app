@@ -7,9 +7,11 @@ import "leaflet/dist/leaflet.css";
 import emp from '../emp.json'
 
 
-const MapRodales = ({ rodalGis, bound }) => {
+const MapRodales = ({ rodalGis, rodalGisCurrent, bound }) => {
 
   const [geoJsonLayer, setGeoJsonLayer] = useState();
+
+  const [geoJsonLayerCurrent, setGeoJsonLayerCurrent] = useState();
 
 
   const setColorInicial = ({ properties }) => {
@@ -21,18 +23,31 @@ const MapRodales = ({ rodalGis, bound }) => {
     };
   };
 
+  const setColorCurrent = ({ properties }) => {
+    return {
+      fillColor: '#00ff00',
+      weight: 0.5,
+      color: '#0000ff',
+      fillOpacity: 0.6
+    };
+  };
+
 
 
 
   useEffect(() => {
 
-    if (rodalGis != null && bound != null) {
+    if (rodalGis != null && rodalGisCurrent && bound != null) {
       let g_json = <GeoJSON data={rodalGis} style={setColorInicial} />;
       setGeoJsonLayer(g_json);
 
+      let g_json_current = <GeoJSON data={rodalGisCurrent} style={setColorCurrent} />;
+      setGeoJsonLayerCurrent(g_json_current);
+
+
     }
 
-  }, [rodalGis, bound]);
+  }, [rodalGis, rodalGisCurrent, bound]);
 
   return (
     <>
@@ -54,6 +69,10 @@ const MapRodales = ({ rodalGis, bound }) => {
         <LayersControl position="topright">
           <LayersControl.Overlay checked name="Rodal inicial">
             {geoJsonLayer}
+          </LayersControl.Overlay>
+
+          <LayersControl.Overlay checked name="Rodal Actual">
+            {geoJsonLayerCurrent}
           </LayersControl.Overlay>
         </LayersControl>
 

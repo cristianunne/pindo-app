@@ -7,6 +7,9 @@ import '../../../styles/tables/tables.css'
 const TableRodalesEmpresa = ({ data_rodales, has_sagpya }) => {
 
 
+    const current_year = new Date().getFullYear();
+
+
     const navigate = useNavigate();
     const [data, setData] = useState([]);
 
@@ -59,7 +62,8 @@ const TableRodalesEmpresa = ({ data_rodales, has_sagpya }) => {
                     {has_sagpya ?  <th className="dt-center text-center">Sagpya</th> : null }
 
                     <th className="dt-center text-center">Rodal</th>
-
+                    <th className="dt-center text-center">Año de Plantación</th>
+                    <th className="dt-center text-center">Edad (años)</th>
                     <th className="dt-center text-center">Campo</th>
                     <th className="dt-center text-center">¿Certificado?</th>
                     <th className="dt-center text-center">Uso</th>
@@ -83,6 +87,19 @@ const TableRodalesEmpresa = ({ data_rodales, has_sagpya }) => {
                                     <a className='link-td' onClick={goToTodalClick} id_rodal={element.pk}>
                                         {element.cod_sap} </a>
                                 </td>
+
+                                {element.year_inicio != null ? 
+                                    <td className='text-center'>{ element.year_inicio}</td> :
+
+                                    <td className='text-center text-secondary'>Sin Datos</td>
+                                }
+
+                                {element.year_inicio != null ? 
+                                    <td className='text-center'>{ current_year - element.year_inicio}</td> :
+
+                                    <td className='text-center text-secondary'>Sin Datos</td>
+                                }
+                                
 
                                 <td className='text-center'>{element.campo}</td>
                                 <td className='text-center'>{element.is_certificado ? 'Si' : 'No'}</td>

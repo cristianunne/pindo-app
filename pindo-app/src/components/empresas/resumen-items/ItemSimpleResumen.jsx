@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from 'react'
 
-const ItemSimpleResumen = ({ title, value, unidad, icon, unidad_position, style_card }) => {
+const ItemSimpleResumen = ({ title, value, unidad, icon, unidad_position, is_parse, style_card }) => {
 
     const [style, setStyle] = useState();
     const [background, setBackground] = useState();
+
+    const [val, setVal] = useState();
+
+
 
 
 
 
     useEffect(() => {
+        if(is_parse){
+         
+            setVal(parseFloat(value).toFixed(2));
+        } else {
+            setVal(value)
+         
+        }
 
+       
 
     })
 
@@ -37,7 +49,7 @@ const ItemSimpleResumen = ({ title, value, unidad, icon, unidad_position, style_
                             </div>
                         </div>
                     </div>
-                </div> :
+                </div> : style_card === 1 ?
 
                 <div className="card card-sm bg-dark text-yellow-fg">
                     <div className="card-body">
@@ -52,12 +64,15 @@ const ItemSimpleResumen = ({ title, value, unidad, icon, unidad_position, style_
                                     {title}
                                 </div>
                                 <div className="text-white">
-                                   Acacias
+                                {unidad_position == 1 ? <> 
+                                
+                                {unidad + ' ' + val}</> :
+                                        <> {val + ' ' + unidad}</>}
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> : null
 
             }
         </div>

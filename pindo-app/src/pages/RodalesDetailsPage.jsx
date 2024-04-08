@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Header from '../components/header/Header';
 import { RodalesGlobalContext } from '../context/globalcontext';
 import { getRodalesByIdAPI } from '../utility/querys';
@@ -10,7 +10,8 @@ import MainScreenContainer from '../screen/rodales/MainScreenContainer';
 const RodalesDetailsPage = () => {
 
 
-
+    const navigate = useNavigate();
+    
     const { rodalId } = useParams();
 
     const { state } = useLocation();
@@ -25,11 +26,22 @@ const RodalesDetailsPage = () => {
         const data_rodales = await getRodalesByIdAPI(idrodal);
 
         if (data_rodales) {
-         
-            setDataRodales(data_rodales[0]);
 
+            if(data_rodales.lenght > 0){
+                setDataRodales(data_rodales[0]);
+                setStateScreen(true);
+            } else {
+                navigate(`/rodales`)
+            }
+         
+            
+
+        } else {
+
+            //hago un navigation al menu de rodales
+            navigate(`/rodales`)
         }
-        setStateScreen(true);
+        
 
     }
 
@@ -47,8 +59,6 @@ const RodalesDetailsPage = () => {
               
                
             }
-
-
 
         } else {
 

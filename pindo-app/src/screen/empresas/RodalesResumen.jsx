@@ -15,13 +15,13 @@ const RodalesResumen = ({ empresa }) => {
     const [colorsBar, setColorsBar] = useState([]);
 
 
+
     const getRodalesByEmpresa = async () => {
 
         const data_rod_emp = await getRodalesByEmpresaAPI(empresa.empresas_id);
 
         if (data_rod_emp) {
 
-            console.log(data_rod_emp);
             setDataRodalesEmpresa(data_rod_emp);
 
             let data_graphic_ = [];
